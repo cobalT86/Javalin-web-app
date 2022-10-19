@@ -1,0 +1,45 @@
+{
+  "scenarioName": "Transfer API",
+  "steps": [
+    {
+      "name": "create",
+      "url": "/create",
+      "operation": "POST",
+      "request": {
+        "body": {
+          "id": "4",
+          "balance": "5000"
+        }
+      },
+      "assertions": {
+        "status": 201,
+        "body": "$NULL"
+      }
+    },
+    {
+      "name": "findAccount",
+      "url": "/findaccount/3",
+      "operation": "POST",
+      "request": {
+      },
+      "assertions": {
+        "status": 201,
+        "body": {
+          "id": "3",
+          "balance": "5000"
+        }
+      }
+    },
+    {
+      "name": "transfer",
+      "url": "/transfer/1000?from=1&to=2",
+      "operation": "POST",
+      "request": {
+      },
+      "assertions": {
+        "status": 202,
+        "body": "Sum was transfered to account id : 2 which now has a balance of 6000"
+      }
+    }
+  ]
+}
